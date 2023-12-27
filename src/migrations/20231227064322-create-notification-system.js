@@ -24,7 +24,9 @@ module.exports = {
       status: {
         type: Sequelize.ENUM,
         allowNull:false,
-        values:['PENDING','SUCCESS','FAILED'] //these are the status which our email service will show its present status 
+        values:['PENDING','SUCCESS','FAILED'], //these are the status which our email service will show its present status 
+        defaultValue:"PENDING"
+
       },
       notificationTime: {  //it represent how much time do we need to setup our crone job
         type: Sequelize.DATE,
