@@ -18,7 +18,18 @@ const sendBasicEmail=async (mailFrom,mailTo,mailSubject,mailBody)=>{ //these are
 const fetchPendingEmails=async (timestamp)=>{
     try {
        
-        const response=repo.get({status:"PENDING"});
+        const response= await repo.get({status:"PENDING"});
+        return response; 
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+const updateTicket=async(ticketId,data)=>{
+    try {
+       
+        const response=repo.update(ticketId,data);
         return response; 
         
     } catch (error) {
@@ -39,5 +50,6 @@ const createNotification=async (data)=>{
 module.exports={
     sendBasicEmail,
     fetchPendingEmails,
-    createNotification
+    createNotification,
+    updateTicket
 }

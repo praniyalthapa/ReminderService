@@ -40,6 +40,19 @@ const { Op } = require('sequelize');
     }
 
    }
+  async update(ticketId,data){
+        try {
+            const ticket=await NotificationSystem.findByPk(ticketId);
+            if(data.status) //if status is there then we will update the status
+            ticket.status=data.status;
+            await ticket.save();
+            return ticket;
+            
+        } catch (error) {
+            throw error;
+        }
+  }
+  
 
     
  }
